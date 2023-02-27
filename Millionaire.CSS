@@ -1,0 +1,48 @@
+h1 {
+    color: orange;
+    display: inline;
+    font-size: 16px;
+}
+
+p {
+    display: inline;
+}
+
+h2 {
+    color: purple;
+}
+
+/* 1-8: element selectors
+ 9: combinator
+ 17-20: class selector*/
+
+
+
+body {
+    height: 1440px;
+}
+
+h2+button {
+    background-color: green;
+}
+
+
+.answer-button {
+    width: 20%;
+    color: red;
+}
+
+.answer-button:disabled {
+    color: gray;
+}
+
+.answer-button:hover {
+    background-color: black;
+}
+
+#button-reset {
+    width: 20%;
+    border: 2px solid red;
+    border-radius: 8px;
+    margin-left: 40%;
+}
