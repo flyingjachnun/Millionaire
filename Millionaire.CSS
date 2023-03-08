@@ -5,44 +5,58 @@ h1 {
 }
 
 p {
+    color: white;
     display: inline;
 }
 
 h2 {
-    color: purple;
+    font-weight: 600;
+    color: white;
+    text-align: center;
 }
 
 /* 1-8: element selectors
  9: combinator
  17-20: class selector*/
 
-
+input {
+    color: yellow;
+    background-color: grey;
+    border-color: antiquewhite;
+    border-radius: 10px;
+    text-align: center;
+}
 
 body {
-    height: 1440px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(23, 40, 89);
+    /* height: 1440px; */
 }
-
-h2+button {
-    background-color: green;
-}
-
 
 .answer-button {
-    width: 20%;
-    color: red;
+    border-color: antiquewhite;
+    color: white;
+    width: 100%;
+    background-color: rgba(48, 88, 231, 0.539);
+    color: white;
+    align-items:center;
+    margin-top: 5px;
+    border-radius: 10px;
 }
 
 .answer-button:disabled {
-    color: gray;
+    background-color: lightslategrey;
+    color: black;
 }
 
 .answer-button:hover {
-    background-color: black;
+    background-color: rgb(230, 139, 4);
 }
 
 #button-reset {
     width: 20%;
-    border: 2px solid red;
+    border: 2px solid rgb(87, 19, 19);
     border-radius: 8px;
     margin-left: 40%;
+    margin-top: 10px;
 }

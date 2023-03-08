@@ -3,6 +3,7 @@ const elementButtonB = document.getElementById("button-b");
 const elementButtonC = document.getElementById("button-c");
 const elementButtonD = document.getElementById("button-d");
 const elementButtonReset = document.getElementById("button-reset");
+const elementSpanScore = document.getElementById("score-number");
 
 elementButtonA.addEventListener("click", wrongAnswer);
 elementButtonB.addEventListener("click", rightAnswer);
@@ -10,10 +11,12 @@ elementButtonC.addEventListener("click", wrongAnswer);
 elementButtonD.addEventListener("click", wrongAnswer);
 elementButtonReset.addEventListener("click", resetGame);
 var questionNumber = 1
+var score = 1
 // to reset a game: questionNumber = 1, Reset header-question, buttons
 function resetGame() {
     questionNumber = 1
     updateAnswersText()
+    switchButtonEvents()
     const elementHeaderQuestion = document.getElementById("header-question");
     elementHeaderQuestion.innerText = "Who was the first black president of the United States of America?"
     const elementInputResult = document.getElementById("input-print-result");
@@ -28,7 +31,8 @@ function resetGame() {
     elementButtonD.disabled = false
     elementButtonReset.hidden = false
     elementButtonReset.disabled = true
-
+    score = 1
+    elementSpanScore.innerText = score
 }
 
 function wrongAnswer() {
@@ -41,36 +45,39 @@ function wrongAnswer() {
     elementButtonReset.disabled = false
 }
 function rightAnswer() {
+    score += 5
+    elementSpanScore.innerText = score
 
-    if (questionNumber === 1) {
-        questionNumber = questionNumber + 1
-        const elementHeaderQuestion = document.getElementById("header-question");
-        elementHeaderQuestion.innerText = "What is The Average Speed of Sound?"
-        updateAnswersText()
-        switchButtonEvents()
-    }
-    else if (questionNumber === 2) {
-        questionNumber = questionNumber + 1
-        const elementHeaderQuestion = document.getElementById("header-question");
-        elementHeaderQuestion.innerText = "Why is Mor Yemen?"
-        updateAnswersText()
-        switchButtonEvents()
-    }
-    else if (questionNumber === 3) {
-        questionNumber = questionNumber + 1
-        const elementHeaderQuestion = document.getElementById("header-question");
-        elementHeaderQuestion.innerText = "When did Germany lose the war at WW II?"
-        updateAnswersText()
-        switchButtonEvents()
-    }
-    else if (questionNumber === 4) {
-        questionNumber = questionNumber + 1
-        const elementHeaderQuestion = document.getElementById("header-question");
-        elementHeaderQuestion.innerText = "When did Germany lose the war at WW II?"
-        updateAnswersText()
+    if (questionNumber === 4) {
         winningAnswer()
     }
 
+    questionNumber++
+    updateAnswersText()
+    switchButtonEvents()
+    updateQuestionText()
+}
+
+
+
+function updateQuestionText() {
+    const elementHeaderQuestion = document.getElementById("header-question");
+
+
+    switch (questionNumber) {
+        case 1:
+            elementHeaderQuestion.innerText = " Who was the first black president of the United States of America?"
+            break;
+        case 2:
+            elementHeaderQuestion.innerText = "What is The Average Speed of Sound?"
+            break;
+        case 3:
+            elementHeaderQuestion.innerText = "Why is Mor Yemen?"
+            break;
+        case 4:
+            elementHeaderQuestion.innerText = "When did Germany lose the war at WW II?"
+            break;
+    }
 
 }
 function updateAnswersText() {
@@ -79,7 +86,7 @@ function updateAnswersText() {
         elementButtonA.innerText = "A - Donald Trump"
         elementButtonB.innerText = "B - Barak Obama"
         elementButtonC.innerText = "C - Loey C K"
-        elementButtonD.innerText = "D - Benjamin Netanyahu"
+        elementButtonD.innerText = "D - Bibi Netanyahu"
     }
 
 
@@ -109,7 +116,13 @@ function updateAnswersText() {
     }
 }
 function switchButtonEvents() {
-    if (questionNumber === 2) {
+    if (questionNumber === 1) {
+        elementButtonD.removeEventListener("click", rightAnswer);
+        elementButtonB.removeEventListener("click", wrongAnswer);
+        elementButtonB.addEventListener("click", rightAnswer);
+        elementButtonD.addEventListener("click", wrongAnswer);
+    }
+    else if (questionNumber === 2) {
         elementButtonD.removeEventListener("click", wrongAnswer);
         elementButtonB.removeEventListener("click", rightAnswer);
         elementButtonA.removeEventListener("click", wrongAnswer);
@@ -142,7 +155,6 @@ function winningAnswer() {
     elementButtonReset.disabled = false
 }
 
-//add a fourth question, when asnwered right - "yay! End of Game"
-//and switch the buttons into disabled
-//on wrong answer, add a start over button, when clicked, move to question number 1
-
+//add a fourth question, when asnwered right - "yay! End of Game" V
+//and switch the buttons into disabled V
+//on wrong answer, add a start over button, when clicked, move to question number 1 V
