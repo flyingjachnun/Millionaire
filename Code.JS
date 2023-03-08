@@ -10,6 +10,11 @@ elementButtonB.addEventListener("click", rightAnswer);
 elementButtonC.addEventListener("click", wrongAnswer);
 elementButtonD.addEventListener("click", wrongAnswer);
 elementButtonReset.addEventListener("click", resetGame);
+var questionTimeInit = Date.now()
+var questionTimeA = -1
+var questionTimeB = -1
+var questionTimeC = -1
+var questionTimeD = -1
 var questionNumber = 1
 var score = 1
 // to reset a game: questionNumber = 1, Reset header-question, buttons
@@ -47,18 +52,38 @@ function wrongAnswer() {
 function rightAnswer() {
     score += 5
     elementSpanScore.innerText = score
+    updateQuestionTime()
 
     if (questionNumber === 4) {
         winningAnswer()
     }
-
+    console.log(questionTimeA)
     questionNumber++
     updateAnswersText()
     switchButtonEvents()
     updateQuestionText()
 }
 
+function updateQuestionTime() {
+    if (questionNumber === 1) {
+        questionTimeA = Date.now()
+        console.log((questionTimeA - questionTimeInit) / 1000);
+    }
+    else if (questionNumber === 2) {
+        questionTimeB = Date.now()
+        console.log((questionTimeB - questionTimeA) / 1000);
+    }
+    else if (questionNumber === 3) {
+        questionTimeC = Date.now()
+        console.log((questionTimeC - questionTimeB) / 1000);
+    }
+    else if (questionNumber === 4) {
+        questionTimeD = Date.now()
+        console.log((questionTimeD - questionTimeC) / 1000);
+    }
 
+
+}
 
 function updateQuestionText() {
     const elementHeaderQuestion = document.getElementById("header-question");
