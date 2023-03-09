@@ -82,7 +82,6 @@ function updateQuestionTime() {
         console.log((questionTimeD - questionTimeC) / 1000);
     }
 
-
 }
 
 function updateQuestionText() {
